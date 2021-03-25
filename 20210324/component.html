@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- 组件：为了复用 ，然后把相关代码抽离出来单独放在一个文件里面 例子：幻灯片 -->
+        <div id="app">
+            <btn2 :spring="value" :autom="value2"></btn2>
+        </div>
+        <script src="./vue.js"></script>
+        <script>
+            var btn = {
+                template: '<button>{{text}}{{spring}}{{autom.v1}}{{autom.v2}}</button>',
+                props: ['spring', 'autom'],
+                data() {
+                    return {
+                        text: '点击',
+                    };
+                },
+            };
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        value: '春风不度玉门关',
+                        value2: {
+                            v1: '秋风带走我的思念',
+                            v2: '带走我的泪',
+                        },
+                    };
+                },
+                components: {
+                    btn2: btn, //组件名：组件值
+                },
+            });
+            //当key和value（属性名和属性值一样，name可以用属性名来简写）
+            var age = 18;
+            var obj = {
+                name: 'nihao',
+                age,
+            };
+            console.log(obj);
+
+            var obj2 = {
+                name: 'xiao',
+                name: 'da',
+                name: 'shu',
+            };
+            console.log(obj2.name); //当对象有多个相同的属性时 ，总是以最后一个为准
+        </script>
+    </body>
+</html>

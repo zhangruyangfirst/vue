@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="./vue.js"></script>
+        <style>
+            .study {
+                color: red;
+            }
+            .fonts {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- v-bind:简写：
+              绑定style，如果遇到font-size这种属性，我们应该省去-第二个单词首字母大写 -->
+        <div id="app">
+            <p v-bind:class="['study','fonts']">学习使人快乐</p>
+            <p v-bind:class="{'study':isStudy}">你们好</p>
+            <p v-bind:style="{color:color}">牛年大吉</p>
+            <p :style="{fontSize : a + 'px'}">zhenhao</p>
+        </div>
+        <script>
+            (function (name) {
+                console.log(name);
+            })('zhangruyang');
+
+            function fn(name) {
+                console.log(name);
+            }
+            fn('mingtian');
+
+            var fn1 = function () {
+                console.log(222);
+            };
+            fn1();
+
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        isStudy: true,
+                        color: 'green',
+                        a: 50,
+                    };
+                },
+            });
+            var obj = {
+                
+            }
+            //通过DOM获取的数据类型是类数组
+            // var text = document.getElementsByClassName('text');
+            // //console.log 普通打印  console.dir 更加详细的打印
+            // text[0].style.fontSize = 40 + 'px';
+            // text[0].style.fontWeight = 'bold';
+            //可以使用.访问的说明前面的数据类型是对象
+        </script>
+    </body>
+</html>

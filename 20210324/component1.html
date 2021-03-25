@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <btn v-cloak>
+                hello world!
+
+                <template v-slot:ju> <h3>{{value}}</h3></template>
+                <template v-slot:rose><h3>送你九十九朵玫瑰</h3></template>
+            </btn>
+        </div>
+        <template id="btn">
+            <div>
+                <button>按钮</button>
+                <slot ></slot>
+                <slot name="ju">你们好</slot>
+            </div>
+        </template>
+        <script src="./vue.js"></script>
+        <script>
+            var btn = {
+                template: '#btn',
+            };
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        value: '世界很大，我想去看看',
+                    };
+                },
+                components: {
+                    btn,
+                },
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>计算器</title>
+        <script src="./vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <!-- <input type="number" v-model.number="startNumber" /> + <input type="number" v-model.number="endNumber" /> = <input type="text" v-model="total" /> -->
+            <input type="text" v-model="startNumber" /> + <input type="text" v-model="endNumber" @keyup.enter="autoTotal" /> =
+            <input type="text" v-model="total" />
+            <button @click="handleTotal">开始计算</button>
+        </div>
+
+        <script>
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        startNumber: '',
+                        endNumber: '',
+                        total: '',
+                    };
+                },
+                methods: {
+                    handleTotal: function () {
+                        //字符串转数字
+                        // this.total = Number(this.startNumber) + Number(this.endNumber);
+                        this.total = this.startNumber * 1 + this.endNumber * 1;
+                    },
+                    autoTotal: function () {
+                        this.total = this.startNumber * 1 + this.endNumber * 1;
+                        console.log(123);
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

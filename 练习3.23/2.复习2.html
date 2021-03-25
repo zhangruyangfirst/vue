@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>复习2</title>
+        <style>
+            .red {
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <div :class="{'red': isRed}">红红火火</div>
+            <button @click="handleChangeRed">按钮</button>
+        </div>
+        <!-- 在引入js代码块里面写入任何代码都是不生效的 -->
+        <script src="../vue.js"></script>
+        <script>
+            // 无名/匿名函数自执行
+            // var fn = (function () {
+            //     console.log(222);
+            // })
+            // (function (name) {
+            //     console.log(name);
+            // })('zhangruyang');
+
+            // 参数: 1.实参, 2.形参
+            function fn(name = 'zhangsan') {
+                // console.log(name);
+                return name;
+            }
+            var res = fn(); // 函数名加括号是函数调用
+            console.log(res); // 函数没有返回值的话默认是undefined
+
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        isRed: false,
+                    };
+                },
+                methods: {
+                    handleChangeRed: function () {
+                        console.log(this);
+                        //  es6 解构赋值
+                        // var isRed = this.isRed;
+                        var { isRed } = this;
+                        console.log(isRed);
+                        this.isRed = !this.isRed;
+                    },
+                },
+            });
+
+            // ES6(ECMAScript): 结构赋值
+            var obj = {
+                name: 'zhangruyang',
+                age: 18,
+                sex: 'boy',
+                hobby: {
+                    a: '篮球',
+                    b: '足球',
+                },
+            };
+            // 对象结构赋值的过程当中,想要获取的属性和它的顺序是没有关系的
+            var sex = obj.sex;
+            var {
+                sex,
+                age,
+                hobby: { a, b },
+            } = obj;
+            // console.log(sex2); // undefined
+            console.log(age, '====age======');
+            console.log(sex, '=====sex=====');
+            // console.log(hobby, '=====hobby=====');
+            console.log(a, '=====a=====');
+            console.log(b, '=====b=====');
+
+            // 数组结构赋值
+            var arr = [1, 2, 3];
+            // console.log(arr[2]);
+            var [, , c] = arr;
+            var e = 10,
+                f = 20;
+            var ary = [e, f];
+            var [f, e] = [e, f];
+            console.log(a, '=======a=======');
+            console.log(b, '=======b=======');
+            console.log(c, '=======c=======');
+            console.log(ary);
+            console.log(e, '=======e=======');  // 20
+            console.log(f, '=======f=======');  // 10
+        </script>
+    </body>
+</html>

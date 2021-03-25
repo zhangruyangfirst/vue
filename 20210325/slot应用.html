@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div id="app">
+            <btn :classname="className" :text="content">
+                <template>{{text}}</template>
+            </btn>
+            <div>
+                <button type="button" class="btn btn-default" @click="handleChange('btn-default','默认')">默认</button>
+                <button type="button" class="btn btn-success" @click="handleChange('btn-success','成功')">成功</button>
+                <button type="button" class="btn btn-warning" @click="handleChange('btn-warning','警告')">警告</button>
+            </div>
+        </div>
+        <template id="btn">
+            <button :class="['btn',classname]">按钮</button>
+            <solte :text="content"></solte>
+        </template>
+        <script src="./vue.js"></script>
+        <script>
+            var btn = {
+                props: {
+                    classname: {
+                        type: String,
+                    },
+                    text: {
+                        type: String,
+                    },
+                },
+                template: '#btn',
+            };
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        className: '',
+                        congtent: '',
+                    };
+                },
+                methods: {
+                    handleChange(name, text) {
+                        // console.log(this.className);
+                        this.className = name;
+                        this.content = text;
+                    },
+                },
+                components: {
+                    btn: btn,
+                },
+            });
+        </script>
+    </body>
+</html>

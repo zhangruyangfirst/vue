@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <span>{{value}}</span>
+            <div v-html="html"></div>
+            <div v-show="isShow">所有的烦恼统统都消散</div>
+            <div v-if="socer>20">清华</div>
+            <div v-else-if="socer>10">北大</div>
+            <div v-else>家里蹲</div>
+            <div>
+                <li v-for="item in list">{{item}}</li>
+                <div>
+                    <li v-for="item in newList" :key="item.id">
+                        <span>{{item.sport}}</span>
+                        <span>{{item.id}}</span>
+                    </li>
+                </div>
+            </div>
+            <input type="text" @keyup.down="handleDown" />
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            Vue.config.keyCodes = {
+                down: [40, 83],
+            };
+
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        value: '你笑起来真好看',
+                        html: '<h2>像春天的花一样</h2>',
+                        isShow: true,
+                        socer: 20,
+                        list: ['学习', '游戏', '运动'],
+                        newList: [
+                            { id: '1', sport: 'A' },
+                            { id: '2', sport: 'B' },
+                            { id: '3', sport: 'C' },
+                        ],
+                    };
+                },
+                methods: {
+                    handleDown() {
+                        console.log('向下移动了');
+                    },
+                },
+            });
+
+            // var vm = new Vue(){} vm.$mount('#app') 手动挂载
+        </script>
+    </body>
+</html>

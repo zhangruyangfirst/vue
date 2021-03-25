@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="./vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <div v-if="say === '学习了'">今天学习vue</div>
+            <div v-else>今天没有学习</div>
+            <div>
+                <div v-if="fenshu>90">A</div>
+                <div v-else-if="fenshu>80">B</div>
+                <div v-else-if="fenshu>70">C</div>
+                <div v-else>D</div></div>
+            </div>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        say: '学习了',
+                        fenshu:'88',
+                    };
+                },
+            });
+        </script>
+    </body>
+</html>

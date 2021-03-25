@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="./vue.js"></script>
+    </head>
+    <body>
+        <!-- v-on缩写@用来绑定处理事件 -->
+        <div id="app">
+            <button v-on:click="handleClick">单机</button>
+            <span>{{value}}</span>
+            <input type="text" @keyup.downs="keyDown" />
+        </div>
+        <script>
+            Vue.config.keyCodes = {
+                downs: [38, 40],
+            };
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        value: 0,
+                    };
+                },
+                // this:代表vue这个实例对象
+                methods: {
+                    handleClick: function () {
+                        this.value++; //隐式数据类型转换，转化成了数字
+                        console.log('我被点击了');
+                    },
+                    keyDown() {
+                        console.log('向下移动');
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

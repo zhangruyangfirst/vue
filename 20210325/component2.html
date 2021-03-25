@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <!-- <btn></btn>  没有被定义所以不会显示 局部注册 只能在app中使用 -->
+            <btn2></btn2>
+        </div>
+        <div id="add">
+            <btn></btn>
+            <btn2></btn2>
+        </div>
+        <template id="btn">
+            <button>按钮</button>
+        </template>
+        <template id="btn2">
+            <button>按钮2</button>
+        </template>
+        <script src="./vue.js"></script>
+        <script>
+            //btn局部注册 只能在 app里面使用
+            var btn2 = {
+                template: '#btn2',
+            };
+            //Vue.component('组件名'，组件值)
+            Vue.component('btn2', btn2); //全局注册，可以再有btn2的所有标签中使用
+            var btn = {
+                template: '#btn',
+            };
+            new Vue({
+                el: '#app',
+                data() {
+                    return {};
+                },
+                components: {
+                    btn: btn,
+                },
+            });
+            new Vue({
+                el: '#add',
+                data() {
+                    return {};
+                },
+            });
+        </script>
+    </body>
+</html>

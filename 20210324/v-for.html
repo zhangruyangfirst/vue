@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="./vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <ul>
+                <li v-for="item in list">{{item}}</li>
+                <!-- <li>新闻中心</li>
+            <li>下载中心</li> -->
+            </ul>
+            <ul>
+                <!-- key:是需要唯一的值，类似数据库中的主键 -->
+                <li v-for="(item,index) in newList" :key="index">
+                    <span>{{item.title}}</span>
+                    <span>{{item.date}}</span>
+                    <span>索引：{{index}}</span>
+                </li>
+                <!-- <li>
+                <span>3432</span>   
+                <span>2012-08-20</span>
+            </li>
+            <li>
+                <span>123</span>   
+                <span>2013-20-30</span>
+            </li> -->
+            </ul>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        list: ['网站首页', '新闻中心', '下载中心'],
+                        newList: [
+                            { title: '今天天气很棒', date: '2013-12-20' },
+                            { title: 'vue', date: '2014-02-30' },
+                            { title: '春分时节', date: '201-20-20' },
+                        ],
+                    };
+                },
+            });
+        </script>
+    </body>
+</html>

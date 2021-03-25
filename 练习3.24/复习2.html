@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script src="../vue.js"></script>
+        <script>
+            var fn = function () {
+                console.log('期待');
+            };
+            fn();
+
+            (function (name) {
+                console.log(name);
+            })('xiamming');
+
+            function fn1(name = 'shanshan') {
+                // console.log(name);
+                return name;
+            }
+            var res = fn1();
+            console.log(res);
+            new Vue({
+                el: '#app',
+                data() {
+                    return {};
+                },
+            });
+        </script>
+    </body>
+</html>

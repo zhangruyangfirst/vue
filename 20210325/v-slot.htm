@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <!-- v-slot 的缩写 #  插槽 -->
+        <div id="app">
+            <btn>
+                <!-- 这里必须用template的标签去承载内容 -->
+                <template #header="value">我是父组件内容{{value.data}}</template>
+            </btn>
+        </div>
+        <template id="btn">
+            <div>
+                <!-- 子传递父的传递叫做作用域插槽 -->
+                <button>按钮</button>
+                <slot name="header" :data="value">子组件默认组件</slot>
+            </div>
+        </template>
+        <script src="./vue.js"></script>
+        <script>
+            var btn = {
+                template: '#btn',
+                data() {
+                    return {
+                        value: '清风',
+                    };
+                },
+            };
+            new Vue({
+                el: '#app',
+                data() {
+                    return {};
+                },
+                components: {
+                    btn: btn,
+                },
+            });
+        </script>
+    </body>
+</html>

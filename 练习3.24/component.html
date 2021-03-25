@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <btn2 :warm="value" :spring="value1"></btn2>
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            var btn = {
+                template: '<button>{{ text }}--{{warm}}--{{spring.v1}} --{{spring.v2}}</button>',
+                props: ['warm', 'spring'],
+                data() {
+                    return {
+                        text: '点击',
+                    };
+                },
+            };
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        value: '好难热',
+                        value1: {
+                            v1: '好男人',
+                            v2: '坏女人',
+                        },
+                    };
+                },
+
+                components: {
+                    btn2: btn,
+                },
+            });
+        </script>
+    </body>
+</html>

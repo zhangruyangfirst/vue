@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="./vue.js"></script>
+        <style>
+            .one {
+                color: red;
+            }
+            .two {
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <li v-bind:class="['one','two']">清风拂面</li>
+            <li v-bind:class="{'one':one}">y一叶一菩提</li>
+            <li v-bind:style="{color:color}">身体健康</li>
+            <li :style="{fontSize:a + 'px'}">quba</li>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        one: true,
+                        color: 'green',
+                        a: 50,
+                    };
+                },
+            });
+        </script>
+    </body>
+</html>

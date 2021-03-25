@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="./vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <ul v-for="arr in list">
+                <li>{{arr}}</li>
+                <!-- <li>星期二</li>
+            <li>星期三</li>
+            <li>星期四</li>
+            <li>星期五</li>
+            <li>星期六</li>
+            <li>星期天</li> -->
+            </ul>
+            <ul v-for="(arr,index) in newList" :key="index">
+                <span>{{arr.title}}</span>
+                <span>{{arr.Date}}</span>
+                <span>索引值{{index}}</span>
+            </ul>
+        </div>
+        <script>
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        list: ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天'],
+                        newList: [
+                            { title: 'one', Date: '2012-08-20' },
+                            { title: 'two', Date: '2012-12-02' },
+                            { title: 'three', Date: '2014-05-02' },
+                            { title: 'four', Date: '2014 - 06 - 20' },
+                        ],
+                    };
+                },
+            });
+        </script>
+    </body>
+</html>

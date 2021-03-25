@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <script src="./vue.js"></script>
+    </head>
+    <body>
+        <div id="spring">
+            <div v-if="say === '天气不错' ">一起出去春游吧</div>
+            <div v-else>在家看电视吧</div>
+            <div>
+                <div v-if="number===1">一等奖</div>
+                <div v-else-if="number===2">二等奖</div>
+                <div v-else-if="number===3">三等奖</div>
+                <div v-else>谢谢惠顾</div>
+            </div>
+        </div>
+        <script>
+            new Vue({
+                el: '#spring',
+                data() {
+                    return {
+                        say: '1天气不错',
+                        number: 4,
+                    };
+                },
+            });
+        </script>
+    </body>
+</html>

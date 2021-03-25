@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+   
+    <div id="app">
+        <div v-show="isShow">大家好</div>
+
+    </div>
+    <script>
+
+        //v-show是通过display：none去显示隐藏，其实这个Dom是真实存在的，
+        //v-if：当条件成立时候，去创建DOM，条件不成立时候，则会销毁DOM，更耗性能
+         var xiaoming = 'height';
+        //当条件为真时值则显示，假则不显示，
+        //js数据类型：
+       //1.简单类型：数，字符串，布尔型，undefined，null，symbol
+       //2.复杂类型：对象（object），函数（function），正则，日期（data）等等，，
+        new Vue({
+            el:'#app',  //自动挂载
+            data(){
+                return{
+                    isShow:false
+                }
+            }
+            // vm.$mount('#app') 手动挂载
+        })
+        // console.log(typeof window);
+        console.log(window.xiaoming);
+        //typeof:一元运算符，用来检测数据类型
+
+    </script>
+</body>
+</html>
