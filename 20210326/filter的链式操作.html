@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="wk">
+            <div>{{content | forContent | forContent1}}</div>
+            <div :key="keyValue | forValue(2)"></div>
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            new Vue({
+                el: '#wk',
+                data() {
+                    return {
+                        content: '2021-03-26',
+                        keyValue: '666',
+                    };
+                },
+                filters: {
+                    forContent(val) {
+                        return val.replace('-', '/');
+                    },
+                    forContent1(val) {
+                        return val.replace('-', '/');
+                    },
+                    forValue(val, n) {
+                        console.log((val = val + n));
+                        return (val = val + n);
+                    },
+                },
+            });
+        </script>
+    </body>
+</html>

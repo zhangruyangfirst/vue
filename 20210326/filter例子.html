@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wk" v-cloak>
+            <div>{{dateNow | formatterDate}}</div>
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            new Vue({
+                data() {
+                    return {
+                        dateNow: '',
+                    };
+                },
+                //这个页面DOM加载完成的时候
+                mounted() {
+                    this.getDate();
+                },
+                methods: {
+                    getDate() {
+                        //获取当前日期
+                        var date = new Date();
+                        //获取年份
+                        var year = date.getFullYear();
+                        //获取的月份 会少 1 所以记得＋1
+                        var month = date.getMonth() + 1;
+                        //month < 10 ? '0' + month : month
+                        // if (month < 10) {
+                        //     month = '0' + month;
+                        // } else {
+                        //     month;
+                        // }
+                        // month = String(month).padStart(2, '0');
+                        month = (month + '').padStart(2, '0');
+                        //获取日
+                        var day = date.getDate();
+                        //var day = date.getDay（） 获取星期几
+                        //使用模板字符串进行字符拼接
+                        this.dateNow = `${year}-${month}-${day}`;
+                        console.log(str, '==============str================');
+                    },
+                },
+                filters: {
+                    formatterDate(val) {
+                        // val = val.replace('-', '/');
+                        // return val.replace('-', '/');
+                        //正则表达式 //  -有特殊意义 用\来转义 g = global 全部匹配 i代表不区分大小写
+                        var reg = /\-/g;
+                        return val.replace(reg, '/');
+                    },
+                },
+            }).$mount('#wk');
+
+            //padStart ES6新方法 3代表补位的几位数
+            var str = '2';
+            str = str.padStart(3, '1');
+            //str = str.padEnd（3，‘1’）
+            console.log(str);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">{{couputedText}}</div>
+        <script src="../vue.js"></script>
+        <script>
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        text: 'hello',
+                    };
+                },
+                computed: {
+                    couputedText() {
+                        //reverse():将数组中的数据进行反转
+                        //split（）：以某种形式进行拆分
+                        //join（）
+                        return this.text.split('').reverse().join('');
+                    },
+                },
+            });
+            const months = ['march', 'jan', 'feb', 'dec'];
+            console.log(months, '排序之前');
+            console.log(months.sort(), '排序之后');
+            const numArr = [21, 32, 18, 17];
+            // numArr.sort(function (a, b) {  升序
+            //     return a - b;
+            // });
+            //可以传入一个回调函数，钩子函数，并且有两个参数，第一个减去第二个参数，那么是升序，反之如果第二个参数减去第一个参数 则是降序
+            numArr.sort(function (a, b) {
+                return b - a;
+            });
+            console.log(numArr);
+        </script>
+    </body>
+</html>

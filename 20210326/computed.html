@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="app">
+            <div v-for="item in list">{{item}}</div>
+            <div>{{num1}}</div>
+            <input type="text" v-model="value" />
+            <div>methods:{{now()}}</div>
+            <div>computed:{{nows}}</div>
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            //computed:对属性进行运算
+            new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        num: 6,
+                        value: '',
+                    };
+                },
+                computed: {
+                    //这里的属性不需要再dota里面再定义一遍了
+                    list(val) {
+                        console.log(val);
+                        var arr = [
+                            { title: 'basketball', time: '2021-03-06' },
+                            { title: 'football', time: '2021-03-23' },
+                        ];
+                        return arr;
+                    },
+                    num1() {
+                        return this.num * 5;
+                    },
+                    nows() {
+                        return Date.now();
+                    },
+                },
+                methods: {
+                    now() {
+                        return Date.now();
+                    },
+                },
+            });
+            function fn2() {
+                var fn3 = function () {
+                    return 20;
+                };
+                return fn3;
+            }
+            //拿到 fn3 = 10 这个值
+            // console.log(fn2()());
+            var a = fn2();
+            var b = a;
+            console.log(a());
+        </script>
+    </body>
+</html>

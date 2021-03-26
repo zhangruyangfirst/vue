@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="add">
+            <div v-for="item in list">{{item}}</div>
+            <div>{{nums}}</div>
+            <input type="text" v-model="value" />
+            <div>{{nows}}</div>
+            <div>{{now()}}</div>
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            new Vue({
+                el: '#add',
+                data() {
+                    return {
+                        num: 5,
+                        value: 5,
+                    };
+                },
+                computed: {
+                    list() {
+                        var arr = [
+                            { title: '今天', time: '2012-02-02' },
+                            { title: '明天', time: '2021-02-04' },
+                        ];
+                        return arr;
+                    },
+                    nums() {
+                        return this.num * 6;
+                    },
+                    nows() {
+                        return Date.now();
+                    },
+                },
+                methods: {
+                    now() {
+                        return Date.now();
+                    },
+                },
+            });
+            function fn2() {
+                function fn3() {
+                    return 1111;
+                }
+                return fn3;
+            }
+
+            console.log(fn2()());
+        </script>
+    </body>
+</html>

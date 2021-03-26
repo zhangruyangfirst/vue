@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            [v-cloak] {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wk" v-cloak>
+            <!-- 插值表达式 -->
+            <div>{{sex | forSex}}</div>
+        </div>
+        <script src="../vue.js"></script>
+        <script>
+            //全局注册
+            Vue.filter('forSex', function (val) {
+                return val == 1 ? '男' : '女';
+            });
+            new Vue({
+                data() {
+                    return {
+                        sex: 1,
+                    };
+                },
+                // filters: {
+                //     formatterSex(val) {
+                //         return val == 1 ? '男' : '女';
+                //     },
+                // }, 局部注册注册的过滤器  当全局和局部注册的过滤器重名时 会执行局部过滤器 不去执行全局过滤器
+            }).$mount('#wk');
+        </script>
+    </body>
+</html>
